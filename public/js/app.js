@@ -49578,6 +49578,30 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
+            _vm.errors
+              ? _c(
+                  "div",
+                  _vm._l(_vm.errors, function(error, index) {
+                    return _c(
+                      "div",
+                      {
+                        key: index,
+                        staticClass: "alert alert-warning",
+                        attrs: { role: "alert" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "form",
               {
@@ -49881,6 +49905,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "LoginModal",
@@ -49889,7 +49923,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             email: "",
             password: "",
             remember: "",
-            loading: false
+            loading: false,
+            errors: []
         };
     },
 
@@ -49905,17 +49940,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         logIn: function logIn() {
             var _this = this;
 
+            this.errors = [];
             this.loading = true;
-            axios.post('/login', {
+            axios.post("/login", {
                 email: this.email,
                 password: this.password,
                 remember: this.remember
             }).then(function (res) {
-
                 location.reload();
             }).catch(function (error) {
                 _this.loading = false;
-                console.log(error);
+                if (error.response.status == 422) {
+                    _this.errors.push("We could not verify your credentials");
+                } else {
+                    _this.errors.push("We could not log you in,refresh and try again");
+                }
             });
         }
     },

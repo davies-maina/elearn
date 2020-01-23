@@ -15,6 +15,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div v-if="errors">
+                            <div
+                                class="alert alert-warning"
+                                role="alert"
+                                v-for="(error, index) in errors"
+                                :key="index"
+                            >
+                                {{ errors }}
+                            </div>
+                        </div>
                         <form @submit.prevent="logIn">
                             <div class="form-group">
                                 <div class="input-group">
@@ -85,42 +95,46 @@ export default {
             email: "",
             password: "",
             remember: "",
-            loading:false
+            loading: false,
+            errors: []
         };
     },
 
     methods: {
         ValidateEmail() {
             if (
-                /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
-                    this.email
-                )
+                /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)
             ) {
                 return true;
-            }
-
-            else{
+            } else {
                 return false;
             }
-            
-            
         },
         logIn() {
-            this.loading=true;
-            axios.post('/login', {
-                email:this.email,
-                password:this.password,
-                remember:this.remember
-            })
-                .then((res)=>{
-
+            this.errors = [];
+            this.loading = true;
+            axios
+                .post("/login", {
+                    email: this.email,
+                    password: this.password,
+                    remember: this.remember
+                })
+                .then(res => {
                     location.reload();
                 })
 
-                .catch((error)=>{
-                    this.loading=false
-                    console.log(error)
-                })
+                .catch(error => {
+                    this.loading = false;
+                    if (error.response.status == 422) {
+                        this.errors.push(
+                            "We could not verify your credentials"
+                        );
+                    } else {
+                        this.errors.push(
+                            "We could not log you in,refresh and try again"
+                        );
+                    }
+                });
         }
     },
 
