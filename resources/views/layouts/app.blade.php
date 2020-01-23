@@ -108,8 +108,12 @@
                                 <li><a href="portfoliothree.html">2 Columns</a></li>
                                 <li><a href="portfolio-details.html">Portfolio Details</a></li>
                             </ul>
-                        </li>                         
-                        <li><a href="shortcodes.html ">Shortcodes</a></li>                    
+                        </li> 
+                        
+                        @if (auth()->check())
+                    <li><a href="shortcodes.html ">{{auth()->user()->name}}</a></li>
+                        @endif
+                                            
                     </ul>
                 </div>
                 <div class="search">
@@ -136,7 +140,9 @@
     </section>
     <!--/#services-->
 
-    <login-modal></login-modal>
+    @if (!auth()->check())
+        <login-modal></login-modal>
+    @endif
 
   </div>
 

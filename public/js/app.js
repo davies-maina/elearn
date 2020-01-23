@@ -49106,7 +49106,7 @@ exports = module.exports = __webpack_require__(42)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-login[data-v-abaabf8a] {\r\n\t\twidth: 350px;\n}\n.modal-login .modal-content[data-v-abaabf8a] {\r\n\t\tpadding: 20px;\r\n\t\tborder-radius: 5px;\r\n\t\tborder: none;\n}\n.modal-login .modal-header[data-v-abaabf8a] {\r\n\t\tborder-bottom: none;\r\n        position: relative;\r\n\t\t-webkit-box-pack: center;\r\n\t\t    -ms-flex-pack: center;\r\n\t\t        justify-content: center;\n}\n.modal-login .close[data-v-abaabf8a] {\r\n        position: absolute;\r\n\t\ttop: -10px;\r\n\t\tright: -10px;\n}\n.modal-login h4[data-v-abaabf8a] {\r\n\t\tcolor: #636363;\r\n\t\ttext-align: center;\r\n\t\tfont-size: 26px;\r\n\t\tmargin-top: 0;\n}\n.modal-login .modal-content[data-v-abaabf8a] {\r\n\t\tcolor: #999;\r\n\t\tborder-radius: 1px;\r\n    \tmargin-bottom: 15px;\r\n        background: #fff;\r\n\t\tborder: 1px solid #f3f3f3;\r\n        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);\r\n                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);\r\n        padding: 25px;\n}\n.modal-login .form-group[data-v-abaabf8a] {\r\n\t\tmargin-bottom: 20px;\n}\n.modal-login label[data-v-abaabf8a] {\r\n\t\tfont-weight: normal;\r\n\t\tfont-size: 13px;\n}\n.modal-login .form-control[data-v-abaabf8a] {\r\n\t\tmin-height: 38px;\r\n\t\tpadding-left: 5px;\r\n\t\t-webkit-box-shadow: none !important;\r\n\t\t        box-shadow: none !important;\r\n\t\tborder-width: 0 0 1px 0;\r\n\t\tborder-radius: 0;\n}\n.modal-login .form-control[data-v-abaabf8a]:focus {\r\n\t\tborder-color: #ccc;\n}\n.modal-login .input-group-addon[data-v-abaabf8a] {\r\n\t\tmax-width: 42px;\r\n\t\ttext-align: center;\r\n\t\tbackground: none;\r\n\t\tborder-width: 0 0 1px 0;\r\n\t\tpadding-left: 5px;\r\n\t\tborder-radius: 0;\n}\n.modal-login .btn[data-v-abaabf8a] {        \r\n        font-size: 16px;\r\n        font-weight: bold;\r\n\t\tbackground: #19aa8d;\r\n        border-radius: 3px;\r\n\t\tborder: none;\r\n\t\tmin-width: 140px;\r\n        outline: none !important;\n}\n.modal-login .btn[data-v-abaabf8a]:hover, .modal-login .btn[data-v-abaabf8a]:focus {\r\n\t\tbackground: #179b81;\n}\n.modal-login .hint-text[data-v-abaabf8a] {\r\n\t\ttext-align: center;\r\n\t\tpadding-top: 5px;\r\n\t\tfont-size: 13px;\n}\n.modal-login .modal-footer[data-v-abaabf8a] {\r\n\t\tcolor: #999;\r\n\t\tborder-color: #dee4e7;\r\n\t\ttext-align: center;\r\n\t\tmargin: 0 -25px -25px;\r\n\t\tfont-size: 13px;\r\n\t\t-webkit-box-pack: center;\r\n\t\t    -ms-flex-pack: center;\r\n\t\t        justify-content: center;\n}\n.modal-login a[data-v-abaabf8a] {\r\n\t\tcolor: #fff;\r\n\t\ttext-decoration: underline;\n}\n.modal-login a[data-v-abaabf8a]:hover {\r\n\t\ttext-decoration: none;\n}\n.modal-login a[data-v-abaabf8a] {\r\n\t\tcolor: #19aa8d;\r\n\t\ttext-decoration: none;\n}\n.modal-login a[data-v-abaabf8a]:hover {\r\n\t\ttext-decoration: underline;\n}\n.modal-login .fa[data-v-abaabf8a] {\r\n\t\tfont-size: 21px;\n}\n.trigger-btn[data-v-abaabf8a] {\r\n\t\tdisplay: inline-block;\r\n\t\tmargin: 100px auto;\n}\r\n", ""]);
+exports.push([module.i, "\n.modal-login[data-v-abaabf8a] {\r\n    width: 350px;\n}\n.modal-login .modal-content[data-v-abaabf8a] {\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    border: none;\n}\n.modal-login .modal-header[data-v-abaabf8a] {\r\n    border-bottom: none;\r\n    position: relative;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\n}\n.modal-login .close[data-v-abaabf8a] {\r\n    position: absolute;\r\n    top: -10px;\r\n    right: -10px;\n}\n.modal-login h4[data-v-abaabf8a] {\r\n    color: #636363;\r\n    text-align: center;\r\n    font-size: 26px;\r\n    margin-top: 0;\n}\n.modal-login .modal-content[data-v-abaabf8a] {\r\n    color: #999;\r\n    border-radius: 1px;\r\n    margin-bottom: 15px;\r\n    background: #fff;\r\n    border: 1px solid #f3f3f3;\r\n    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);\r\n            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);\r\n    padding: 25px;\n}\n.modal-login .form-group[data-v-abaabf8a] {\r\n    margin-bottom: 20px;\n}\n.modal-login label[data-v-abaabf8a] {\r\n    font-weight: normal;\r\n    font-size: 13px;\n}\n.modal-login .form-control[data-v-abaabf8a] {\r\n    min-height: 38px;\r\n    padding-left: 5px;\r\n    -webkit-box-shadow: none !important;\r\n            box-shadow: none !important;\r\n    border-width: 0 0 1px 0;\r\n    border-radius: 0;\n}\n.modal-login .form-control[data-v-abaabf8a]:focus {\r\n    border-color: #ccc;\n}\n.modal-login .input-group-addon[data-v-abaabf8a] {\r\n    max-width: 42px;\r\n    text-align: center;\r\n    background: none;\r\n    border-width: 0 0 1px 0;\r\n    padding-left: 5px;\r\n    border-radius: 0;\n}\n.modal-login .btn[data-v-abaabf8a] {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n    background: #19aa8d;\r\n    border-radius: 3px;\r\n    border: none;\r\n    min-width: 140px;\r\n    outline: none !important;\n}\n.modal-login .btn[data-v-abaabf8a]:hover,\r\n.modal-login .btn[data-v-abaabf8a]:focus {\r\n    background: #179b81;\n}\n.modal-login .hint-text[data-v-abaabf8a] {\r\n    text-align: center;\r\n    padding-top: 5px;\r\n    font-size: 13px;\n}\n.modal-login .modal-footer[data-v-abaabf8a] {\r\n    color: #999;\r\n    border-color: #dee4e7;\r\n    text-align: center;\r\n    margin: 0 -25px -25px;\r\n    font-size: 13px;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\n}\n.modal-login a[data-v-abaabf8a] {\r\n    color: #fff;\r\n    text-decoration: underline;\n}\n.modal-login a[data-v-abaabf8a]:hover {\r\n    text-decoration: none;\n}\n.modal-login a[data-v-abaabf8a] {\r\n    color: #19aa8d;\r\n    text-decoration: none;\n}\n.modal-login a[data-v-abaabf8a]:hover {\r\n    text-decoration: underline;\n}\n.modal-login .fa[data-v-abaabf8a] {\r\n    font-size: 21px;\n}\n.trigger-btn[data-v-abaabf8a] {\r\n    display: inline-block;\r\n    margin: 100px auto;\n}\r\n", ""]);
 
 // exports
 
@@ -49692,18 +49692,31 @@ var render = function() {
                         }
                       }
                     }),
-                    _vm._v(" Remember me")
+                    _vm._v("\n                                Remember me")
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(3),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-block btn-lg",
+                      attrs: { type: "submit", disabled: !_vm.formValid }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Sign In\n                            "
+                      )
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm._m(3)
               ]
             )
           ]),
           _vm._v(" "),
-          _vm._m(5)
+          _vm._m(4)
         ])
       ])
     ])
@@ -49727,7 +49740,7 @@ var staticRenderFns = [
             "aria-hidden": "true"
           }
         },
-        [_vm._v("×")]
+        [_vm._v("\n                        ×\n                    ")]
       )
     ])
   },
@@ -49751,21 +49764,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary btn-block btn-lg",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Sign In")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("p", { staticClass: "hint-text" }, [
       _c("a", { attrs: { href: "#" } }, [_vm._v("Forgot Password?")])
     ])
@@ -49775,7 +49773,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
-      _vm._v("Don't have an account? "),
+      _vm._v("\n                    Don't have an account? "),
       _c("a", { attrs: { href: "#" } }, [_vm._v("Create one")])
     ])
   }
@@ -49845,20 +49843,87 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'LoginModal',
+    name: "LoginModal",
     data: function data() {
         return {
-            email: '',
-            password: '',
-            remember: ''
+            email: "",
+            password: "",
+            remember: "",
+            loading: false
         };
     },
 
 
     methods: {
-        logIn: function logIn() {}
+        ValidateEmail: function ValidateEmail() {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        logIn: function logIn() {
+            var _this = this;
+
+            this.loading = true;
+            axios.post('/login', {
+                email: this.email,
+                password: this.password,
+                remember: this.remember
+            }).then(function (res) {
+
+                location.reload();
+            }).catch(function (error) {
+                _this.loading = false;
+                console.log(error);
+            });
+        }
+    },
+
+    computed: {
+        formValid: function formValid() {
+            return this.ValidateEmail() && this.password && !this.loading;
+        }
     }
 });
 

@@ -9,7 +9,11 @@
                     <div class="slide-text">
                         <h1>We Are Creative Nerds</h1>
                         <p>Boudin doner frankfurter pig. Cow shank bresaola pork loin tri-tip tongue venison pork belly meatloaf short loin landjaeger biltong beef ribs shankle chicken andouille.</p>
-                        <a href="#loginModal" class="btn btn-common" data-toggle="modal">SIGN UP</a>
+
+                        
+                        @guest
+                            <a href="#loginModal" class="btn btn-common" data-toggle="modal">Log in</a>
+                        @endguest
                     </div>
                     <img src="images/home/slider/hill.png" class="slider-hill" alt="slider image">
                     <img src="images/home/slider/house.png" class="slider-house" alt="slider image">
