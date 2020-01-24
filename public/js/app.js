@@ -14179,7 +14179,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(48);
 
 
 /***/ }),
@@ -49031,9 +49031,9 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(45)
 /* script */
-var __vue_script__ = __webpack_require__(51)
+var __vue_script__ = __webpack_require__(46)
 /* template */
-var __vue_template__ = __webpack_require__(46)
+var __vue_template__ = __webpack_require__(47)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49565,6 +49565,152 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "LoginModal",
+    data: function data() {
+        return {
+            email: "",
+            password: "",
+            remember: "",
+            loading: false,
+            errors: []
+        };
+    },
+
+
+    methods: {
+        ValidateEmail: function ValidateEmail() {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        logIn: function logIn() {
+            var _this = this;
+
+            this.errors = [];
+            this.loading = true;
+            axios.post("/login", {
+                email: this.email,
+                password: this.password,
+                remember: this.remember
+            }).then(function (res) {
+                location.reload();
+            }).catch(function (error) {
+                _this.loading = false;
+                if (error.response.status == 422) {
+                    _this.errors.push("We could not verify your credentials");
+                } else {
+                    _this.errors.push("We could not log you in,refresh and try again");
+                }
+            });
+        }
+    },
+
+    computed: {
+        formValid: function formValid() {
+            return this.ValidateEmail() && this.password && !this.loading;
+        }
+    }
+});
+
+/***/ }),
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49812,159 +49958,10 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "LoginModal",
-    data: function data() {
-        return {
-            email: "",
-            password: "",
-            remember: "",
-            loading: false,
-            errors: []
-        };
-    },
-
-
-    methods: {
-        ValidateEmail: function ValidateEmail() {
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
-                return true;
-            } else {
-                return false;
-            }
-        },
-        logIn: function logIn() {
-            var _this = this;
-
-            this.errors = [];
-            this.loading = true;
-            axios.post("/login", {
-                email: this.email,
-                password: this.password,
-                remember: this.remember
-            }).then(function (res) {
-                location.reload();
-            }).catch(function (error) {
-                _this.loading = false;
-                if (error.response.status == 422) {
-                    _this.errors.push("We could not verify your credentials");
-                } else {
-                    _this.errors.push("We could not log you in,refresh and try again");
-                }
-            });
-        }
-    },
-
-    computed: {
-        formValid: function formValid() {
-            return this.ValidateEmail() && this.password && !this.loading;
-        }
-    }
-});
 
 /***/ })
 /******/ ]);

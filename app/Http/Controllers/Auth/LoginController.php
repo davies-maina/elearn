@@ -49,9 +49,9 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
 
-        $request->session()->flash('success','successfully loggd in');
+        $request->session()->flash('success', 'successfully loggd in');
         return response()->json([
-            'status'=>'ok'
+            'status' => 'ok'
         ]);
     }
 
@@ -67,7 +67,4 @@ class LoginController extends Controller
     {
         throw new AuthFailsException();
     }
-
-
-
 }

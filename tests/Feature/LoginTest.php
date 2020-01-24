@@ -16,6 +16,20 @@ class LoginTest extends TestCase
      *
      * @return void
      */
+
+    public function test_for_successfull_login()
+    {
+
+        $user = factory(User::class)->create();
+
+        $this->postJson('/login', [
+
+            'email' => $user->email,
+            'password' => 'secret'
+        ])->assertStatus(200)->assertJson([
+            'status' => 'ok'
+        ])->assertSessionHas('success', 'successfully loggd in');
+    }
     public function test_login_wrong_credentials_text()
     {
         /* $this->assertTrue(true); */
