@@ -1,9 +1,9 @@
 @component('mail::message')
 # One more step to join us!
 
-elearn needs to confirm your email.
+Hey {{$username}} , elearn needs to confirm your email.
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => route('confirm_email') . '?token=' . $user->confirm_token])
 Confirm email
 @endcomponent
 

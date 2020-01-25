@@ -20,7 +20,7 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/register/confirm', 'ConfirmEmailController@index');
+Route::get('/register/confirm', 'ConfirmEmailController@index')->name('confirm_email');
 
 Route::get('/logout', function () {
     auth()->logout();
