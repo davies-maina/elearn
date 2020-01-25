@@ -15,6 +15,10 @@ class ConfirmEmailController extends Controller
 
         if ($user) {
             $user->confirm();
+            request()->session()->flash('success', 'Your email has been confirmed');
+            return redirect('/');
+        } else {
+            request()->session()->flash('error', 'confirmation token not recognized');
             return redirect('/');
         }
     }
