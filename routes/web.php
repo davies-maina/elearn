@@ -15,9 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/logout', function(){
-auth()->logout();
 
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/register/confirm', 'ConfirmEmailController@index');
+
+Route::get('/logout', function () {
+    auth()->logout();
 });
 
 Auth::routes();
