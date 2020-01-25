@@ -15,11 +15,11 @@
                             <a href="#loginModal" class="btn btn-common" data-toggle="modal">Log in</a>
                         @endguest
                     </div>
-                    <img src="images/home/slider/hill.png" class="slider-hill" alt="slider image">
-                    <img src="images/home/slider/house.png" class="slider-house" alt="slider image">
-                    <img src="images/home/slider/sun.png" class="slider-sun" alt="slider image">
-                    <img src="images/home/slider/birds1.png" class="slider-birds1" alt="slider image">
-                    <img src="images/home/slider/birds2.png" class="slider-birds2" alt="slider image">
+                    <img src="/images/home/slider/hill.png" class="slider-hill" alt="slider image">
+                    <img src="/images/home/slider/house.png" class="slider-house" alt="slider image">
+                    <img src="/images/home/slider/sun.png" class="slider-sun" alt="slider image">
+                    <img src="/images/home/slider/birds1.png" class="slider-birds1" alt="slider image">
+                    <img src="/images/home/slider/birds2.png" class="slider-birds2" alt="slider image">
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <div class="single-service">
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <img src="images/home/icon1.png" alt="">
+                            <img src="/images/home/icon1.png" alt="">
                         </div>
                         <h2>Incredibly Responsive</h2>
                         <p>Ground round tenderloin flank shank ribeye. Hamkevin meatball swine. Cow shankle beef sirloin chicken ground round.</p>
