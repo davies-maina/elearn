@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Series;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateSeriesRequest;
 
 class SeriesController extends Controller
 {
@@ -32,9 +34,21 @@ class SeriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSeriesRequest $request)
     {
-        //
+        $uploadedImage = $request->image;
+        $imageName = str_slug($request->title) . '.' . $uploadedImage->getClientOriginalExtension();
+        $image = $uploadedImage->storeAs('series', $imageName);
+        Series::create([
+
+            'title' => $request->title,
+            'description' => $request->description,
+            'slug' => str_slug($request->title),
+            'image_url' => 'series/' . $imageName
+
+        ]);
+
+        return redirect()->back();
     }
 
     /**
