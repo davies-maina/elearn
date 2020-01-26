@@ -26,7 +26,7 @@ Route::get('/logout', function () {
     auth()->logout();
 });
 
-Route::prefix('admin')->group(function () {
+Route::middleware('admin')->prefix('admin')->group(function () {
 
     Route::resource('series', 'SeriesController');
 });
