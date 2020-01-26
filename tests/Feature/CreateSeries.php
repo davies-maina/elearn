@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class CreateSeries extends TestCase
 {
     use RefreshDatabase;
-    public function test_if_user_can_create_series()
+    /* public function test_if_user_can_create_series()
     {
         $this->withoutExceptionHandling();
         Storage::fake(config('filesystems.default'));
@@ -21,8 +21,52 @@ class CreateSeries extends TestCase
             'title' => 'The merchant',
             'description' => 'super strong',
             'image' => UploadedFile::fake()->image('image-series.png'),
-        ])->assertRedirect();
+        ])->assertRedirect()->assertSessionHas('success', 'series created successfully');
 
         Storage::disk(config('filesystems.default'))->assertExists('series/' . str_slug('The merchant') . 'png');
+    } */
+
+    public function test_a_series_must_be_created_with_title()
+    {
+        /* $this->withoutExceptionHandling(); */
+        $this->post('/admin/series', [
+
+            /* 'title' => 'The merchant', */
+            'description' => 'super strong',
+            'image' => UploadedFile::fake()->image('image-series.png'),
+        ])->assertSessionHasErrors('title');
+    }
+
+    public function test_a_series_must_be_created_with_description()
+    {
+        /* $this->withoutExceptionHandling(); */
+        $this->post('/admin/series', [
+
+            'title' => 'The merchant',
+            /*  'description' => 'super strong', */
+            'image' => UploadedFile::fake()->image('image-series.png'),
+        ])->assertSessionHasErrors('description');
+    }
+
+    public function test_a_series_must_be_created_with_image()
+    {
+        /* $this->withoutExceptionHandling(); */
+        $this->post('/admin/series', [
+
+            'title' => 'The merchant',
+            'description' => 'super strong',
+            /* 'image' => UploadedFile::fake()->image('image-series.png'), */
+        ])->assertSessionHasErrors('image');
+    }
+
+    public function test_a_series_must_be_created_with_an_actual_image()
+    {
+        /* $this->withoutExceptionHandling(); */
+        $this->post('/admin/series', [
+
+            'title' => 'The merchant',
+            'description' => 'super strong',
+            'image' => 'STRING_INVALID_IMAGE',
+        ])->assertSessionHasErrors('image');
     }
 }

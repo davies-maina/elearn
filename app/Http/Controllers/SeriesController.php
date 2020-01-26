@@ -40,6 +40,7 @@ class SeriesController extends Controller
         $imageName = str_slug($request->title) . '.' . $uploadedImage->getClientOriginalExtension();
         $image = $uploadedImage->storeAs('series', $imageName); */
         $request->uploadSeriesImage()->storeSeries();
+        $request->session()->flash('success', 'series created successfully');
         return redirect()->back();
     }
 
