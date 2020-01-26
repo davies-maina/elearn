@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -13,9 +14,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class CreateSeries extends TestCase
 {
     use RefreshDatabase;
-    /* public function test_if_user_can_create_series()
+    public function test_if_user_can_create_series()
     {
         $this->withoutExceptionHandling();
+        $this->loginAdmin();
         Storage::fake(config('filesystems.default'));
         $this->post('/admin/series', [
 
@@ -25,10 +27,11 @@ class CreateSeries extends TestCase
         ])->assertRedirect()->assertSessionHas('success', 'series created successfully');
 
         Storage::disk(config('filesystems.default'))->assertExists('series/' . str_slug('The merchant') . 'png');
-    } */
+    }
 
     public function test_a_series_must_be_created_with_title()
     {
+        $this->loginAdmin();
         /* $this->withoutExceptionHandling(); */
         $this->post('/admin/series', [
 
@@ -40,6 +43,7 @@ class CreateSeries extends TestCase
 
     public function test_a_series_must_be_created_with_description()
     {
+        $this->loginAdmin();
         /* $this->withoutExceptionHandling(); */
         $this->post('/admin/series', [
 
@@ -51,6 +55,7 @@ class CreateSeries extends TestCase
 
     public function test_a_series_must_be_created_with_image()
     {
+        $this->loginAdmin();
         /* $this->withoutExceptionHandling(); */
         $this->post('/admin/series', [
 
@@ -62,6 +67,7 @@ class CreateSeries extends TestCase
 
     public function test_a_series_must_be_created_with_an_actual_image()
     {
+        $this->loginAdmin();
         /* $this->withoutExceptionHandling(); */
         $this->post('/admin/series', [
 
