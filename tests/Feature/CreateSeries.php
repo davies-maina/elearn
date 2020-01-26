@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -68,5 +69,13 @@ class CreateSeries extends TestCase
             'description' => 'super strong',
             'image' => 'STRING_INVALID_IMAGE',
         ])->assertSessionHasErrors('image');
+    }
+
+    public function test_only_admin_can_create_series()
+    {
+
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $this->post('admin/series')->assertSessionHas('error', 'You are not allowed to perform this action');
     }
 }

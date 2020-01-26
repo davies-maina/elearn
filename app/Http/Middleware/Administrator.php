@@ -19,6 +19,7 @@ class Administrator
             if (auth()->user()->isAdmin()) {
                 return $next($request);
             } else {
+                $request->session()->flash('error', 'You are not allowed to perform this action');
                 return redirect('/');
             }
         } else {
