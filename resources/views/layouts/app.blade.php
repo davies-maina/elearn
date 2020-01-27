@@ -142,6 +142,7 @@
 
     @if (!auth()->check())
         <login-modal></login-modal>
+        
     @endif
 
   </div>
