@@ -14,5 +14,5 @@
 
 @section('content')
 
-
+{{$series->lessons()->first()->title}}
 @endsection
