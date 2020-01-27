@@ -28,7 +28,7 @@
 <script>
 import createlesson from "./children/CreateLesson";
 export default {
-    props: ["dblessons"],
+    props: ["dblessons", "series-id"],
     components: {
         createlesson
     },
@@ -40,7 +40,7 @@ export default {
 
     methods: {
         createLesson() {
-            this.$emit("createNewLesson");
+            this.$emit("createNewLesson", this.seriesId);
         }
     },
 

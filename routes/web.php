@@ -1,5 +1,7 @@
 <?php
 
+use App\Series;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,9 +28,16 @@ Route::get('/logout', function () {
     auth()->logout();
 });
 
+/* Route::get('{series_by_id}', function (Series $series) {
+
+    dd($series);
+}); */  //testing to see route model binding works
+
 Route::middleware('admin')->prefix('admin')->group(function () {
 
     Route::resource('series', 'SeriesController');
+
+    Route::resource('{series_by_id}/lessons', 'LessonsController'); //explicit  route binding
 });
 
 Auth::routes();

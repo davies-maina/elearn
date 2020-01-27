@@ -29,7 +29,7 @@
                                 type="text"
                                 class="form-control"
                                 placeholder="Lesson title"
-                                v-model="title"
+                                v-model="data.title"
                             />
                         </div>
                         <div class="form-group">
@@ -37,7 +37,7 @@
                                 type="number"
                                 class="form-control"
                                 placeholder="video id"
-                                v-model="video_id"
+                                v-model="data.video_id"
                             />
                         </div>
                         <div class="form-group">
@@ -45,7 +45,7 @@
                                 type="number"
                                 class="form-control"
                                 placeholder="Episode no."
-                                v-model="episode_number"
+                                v-model="data.episode_number"
                             />
                         </div>
                         <div class="form-group">
@@ -53,7 +53,7 @@
                                 cols="30"
                                 rows="10"
                                 class="form-control"
-                                v-model="description"
+                                v-model="data.description"
                             ></textarea>
                         </div>
                     </div>
@@ -65,8 +65,12 @@
                         >
                             Close
                         </button>
-                        <button type="button" class="btn btn-primary">
-                            Save changes
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            @click="saveLesson"
+                        >
+                            Save Lesson
                         </button>
                     </div>
                 </div>
@@ -77,18 +81,33 @@
 <script>
 export default {
     mounted() {
-        this.$parent.$on("createNewLesson", () => {
+        this.$parent.$on("createNewLesson", seriesId => {
+            this.series_id = seriesId;
             console.log("creatying");
         });
     },
 
     data() {
         return {
-            title: "",
-            description: "",
-            video_id: "",
-            episode_number: ""
+            data: {
+                title: "",
+                description: "",
+                video_id: "",
+                episode_number: "",
+                series_id: ""
+            }
         };
+    },
+
+    methods: {
+        saveLesson() {
+            axios
+                .post(`/admin/${this.series_id}/lessons`, this.data)
+
+                .then(res => {
+                    console.log(res);
+                });
+        }
     }
 };
 </script>

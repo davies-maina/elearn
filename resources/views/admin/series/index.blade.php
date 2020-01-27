@@ -14,5 +14,5 @@
 
 @section('content')
 
-<vue-lessons dblessons="{{$series->lessons}}"></vue-lessons>
+<vue-lessons dblessons="{{$series->lessons}}" series-id="{{$series->id}}"></vue-lessons>
 @endsection
