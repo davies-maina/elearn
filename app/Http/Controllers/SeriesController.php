@@ -36,12 +36,21 @@ class SeriesController extends Controller
      */
     public function store(CreateSeriesRequest $request)
     {
-        /* $uploadedImage = $request->image;
+        $uploadedImage = $request->image;
         $imageName = str_slug($request->title) . '.' . $uploadedImage->getClientOriginalExtension();
-        $image = $uploadedImage->storeAs('series', $imageName); */
-        $request->uploadSeriesImage()->storeSeries();
-        $request->session()->flash('success', 'series created successfully');
-        return redirect()->back();
+        $image = $uploadedImage->storePubliclyAs('series', $imageName);
+
+        $series = Series::create([
+
+            'title' => $request->title,
+            'description' => $request->description,
+            'slug' => str_slug($request->title),
+            'image_url' => 'series/' . $imageName
+
+        ]);
+        request()->session()->flash('success', 'series created successfully');
+        return redirect()->route('series.show', $series->slug);
+        /* $request->uploadSeriesImage()->storeSeries(); */
     }
 
     /**
@@ -50,9 +59,9 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Series $series)
     {
-        //
+        dd($series);
     }
 
     /**

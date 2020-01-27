@@ -32,19 +32,19 @@ class CreateSeriesRequest extends FormRequest
     }
 
 
-    public function uploadSeriesImage()
+    /* public function uploadSeriesImage()
     {
 
         $uploadedImage = $this->image;
         $imageName = str_slug($this->title) . '.' . $uploadedImage->getClientOriginalExtension();
-        $image = $uploadedImage->storeAs('series', $this->imageName);
+        $image = $uploadedImage->storePubliclyAs('series', $this->imageName);
         return $this;
     }
 
     public function storeSeries()
     {
 
-        Series::create([
+        $series = Series::create([
 
             'title' => $this->title,
             'description' => $this->description,
@@ -52,5 +52,7 @@ class CreateSeriesRequest extends FormRequest
             'image_url' => 'series/' . $this->imageName
 
         ]);
-    }
+        request()->session()->flash('success', 'series created successfully');
+        return redirect()->route('series.show', $series->id);
+    } */
 }
