@@ -19,6 +19,15 @@
                 :key="index"
             >
                 {{ lesson.title }}
+                <span class="badge badge-primary badge-pill"
+                    ><i
+                        class="fa fa-trash"
+                        @click="deleteLesson(lesson.id, index)"
+                    ></i>
+                </span>
+                <span class="badge badge-primary badge-pill"
+                    ><i class="fa fa-edit"></i>
+                </span>
             </li>
         </ul>
         <createlesson></createlesson>
@@ -46,6 +55,11 @@ export default {
     methods: {
         createLesson() {
             this.$emit("createNewLesson", this.seriesId);
+        },
+        deleteLesson(id, index) {
+            axios.delete(`/admin/${this.seriesId}/lessons/${id}`).then(res => {
+                this.lessons.splice(index, 1);
+            });
         }
     },
 

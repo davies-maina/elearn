@@ -50041,6 +50041,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -50065,6 +50074,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         createLesson: function createLesson() {
             this.$emit("createNewLesson", this.seriesId);
+        },
+        deleteLesson: function deleteLesson(id, index) {
+            var _this2 = this;
+
+            axios.delete("/admin/" + this.seriesId + "/lessons/" + id).then(function (res) {
+                _this2.lessons.splice(index, 1);
+            });
         }
     },
 
@@ -50476,7 +50492,19 @@ var render = function() {
         { staticClass: "list-group" },
         _vm._l(_vm.lessons, function(lesson, index) {
           return _c("li", { key: index, staticClass: "list-group-item" }, [
-            _vm._v("\n            " + _vm._s(lesson.title) + "\n        ")
+            _vm._v("\n            " + _vm._s(lesson.title) + "\n            "),
+            _c("span", { staticClass: "badge badge-primary badge-pill" }, [
+              _c("i", {
+                staticClass: "fa fa-trash",
+                on: {
+                  click: function($event) {
+                    return _vm.deleteLesson(lesson.id, index)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(0, true)
           ])
         }),
         0
@@ -50487,7 +50515,16 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "badge badge-primary badge-pill" }, [
+      _c("i", { staticClass: "fa fa-edit" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
