@@ -28,4 +28,19 @@ class CreateLesson extends TestCase
             'title' => $lesson['title']
         ]);
     }
+
+    public function test_a_title_is_required_to_create_a_lesson()
+    {
+        $this->loginAdmin();
+        $this->withoutExceptionHandling();
+        $series = factory(Series::class)->create();
+        $lesson = [
+            /* "title" => 'new lesson', */
+            'description' => 'new lesson desc',
+            'episode_number' => 23,
+            'video_id' => 2222
+        ];
+        $this->post("/admin/{$series->id}/lessons", $lesson)
+            ->assertSessionHasErrors('title');
+    }
 }
