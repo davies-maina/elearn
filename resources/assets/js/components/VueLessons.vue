@@ -15,7 +15,7 @@
         <ul class="list-group">
             <li
                 class="list-group-item"
-                v-for="(lesson, index) in formattedLessons"
+                v-for="(lesson, index) in lessons"
                 :key="index"
             >
                 {{ lesson.title }}
@@ -32,9 +32,14 @@ export default {
     components: {
         createlesson
     },
+    mounted() {
+        this.$on("lessonCreated", data => {
+            this.lessons.push(data);
+        });
+    },
     data() {
         return {
-            lessons: this.dblessons
+            lessons: JSON.parse(this.dblessons)
         };
     },
 
@@ -44,10 +49,6 @@ export default {
         }
     },
 
-    computed: {
-        formattedLessons() {
-            return JSON.parse(this.lessons);
-        }
-    }
+    computed: {}
 };
 </script>

@@ -105,7 +105,9 @@ export default {
                 .post(`/admin/${this.series_id}/lessons`, this.data)
 
                 .then(res => {
-                    console.log(res);
+                    this.$parent.$emit("lessonCreated", res.data);
+                    $("#createlessonModal").modal("hide");
+                    $(".modal-backdrop").remove();
                 });
         }
     }

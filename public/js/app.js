@@ -50048,9 +50048,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         createlesson: __WEBPACK_IMPORTED_MODULE_0__children_CreateLesson___default.a
     },
+    mounted: function mounted() {
+        var _this = this;
+
+        this.$on("lessonCreated", function (data) {
+            _this.lessons.push(data);
+        });
+    },
     data: function data() {
         return {
-            lessons: this.dblessons
+            lessons: JSON.parse(this.dblessons)
         };
     },
 
@@ -50061,11 +50068,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
-    computed: {
-        formattedLessons: function formattedLessons() {
-            return JSON.parse(this.lessons);
-        }
-    }
+    computed: {}
 });
 
 /***/ }),
@@ -50226,8 +50229,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         saveLesson: function saveLesson() {
+            var _this2 = this;
+
             axios.post("/admin/" + this.series_id + "/lessons", this.data).then(function (res) {
-                console.log(res);
+                _this2.$parent.$emit("lessonCreated", res.data);
+                $("#createlessonModal").modal("hide");
+                $(".modal-backdrop").remove();
             });
         }
     }
@@ -50467,7 +50474,7 @@ var render = function() {
       _c(
         "ul",
         { staticClass: "list-group" },
-        _vm._l(_vm.formattedLessons, function(lesson, index) {
+        _vm._l(_vm.lessons, function(lesson, index) {
           return _c("li", { key: index, staticClass: "list-group-item" }, [
             _vm._v("\n            " + _vm._s(lesson.title) + "\n        ")
           ])
