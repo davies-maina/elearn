@@ -26,7 +26,12 @@
                     ></i>
                 </span>
                 <span class="badge badge-primary badge-pill"
-                    ><i class="fa fa-edit"></i>
+                    ><i
+                        class="fa fa-edit"
+                        data-toggle="modal"
+                        data-target="#createlessonModal"
+                        @click="updateLesson(lesson)"
+                    ></i>
                 </span>
             </li>
         </ul>
@@ -45,6 +50,10 @@ export default {
         this.$on("lessonCreated", data => {
             this.lessons.push(data);
         });
+
+        this.$on("lessonUpdated", data => {
+            this.lessons.push(data);
+        });
     },
     data() {
         return {
@@ -60,6 +69,12 @@ export default {
             axios.delete(`/admin/${this.seriesId}/lessons/${id}`).then(res => {
                 this.lessons.splice(index, 1);
             });
+        },
+
+        updateLesson(lesson) {
+            let sId = this.seriesId;
+            this.$emit("updatingLesson", { lesson, sId });
+            /* console.log(sId); */
         }
     },
 

@@ -50050,6 +50050,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -50061,6 +50066,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         this.$on("lessonCreated", function (data) {
+            _this.lessons.push(data);
+        });
+
+        this.$on("lessonUpdated", function (data) {
             _this.lessons.push(data);
         });
     },
@@ -50081,6 +50090,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.delete("/admin/" + this.seriesId + "/lessons/" + id).then(function (res) {
                 _this2.lessons.splice(index, 1);
             });
+        },
+        updateLesson: function updateLesson(lesson) {
+            var sId = this.seriesId;
+            this.$emit("updatingLesson", { lesson: lesson, sId: sId });
+            /* console.log(sId); */
         }
     },
 
@@ -50220,14 +50234,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         var _this = this;
 
         this.$parent.$on("createNewLesson", function (seriesId) {
+            /* this.data = ""; */
+            _this.editing = false;
             _this.series_id = seriesId;
-            console.log("creatying");
+        });
+
+        this.$parent.$on("updatingLesson", function (_ref) {
+            var lesson = _ref.lesson,
+                sId = _ref.sId;
+
+            _this.data = lesson;
+            _this.editing = true;
+            /* this.seriesId = seriesid; */
+            /* console.log(sId); */
+            _this.series_id = sId;
+            _this.lesson_id = lesson.id;
         });
     },
     data: function data() {
@@ -50237,8 +50276,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 description: "",
                 video_id: "",
                 episode_number: "",
-                series_id: ""
-            }
+                series_id: "",
+                lesson_id: ""
+            },
+            editing: false
         };
     },
 
@@ -50251,6 +50292,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.$parent.$emit("lessonCreated", res.data);
                 $("#createlessonModal").modal("hide");
                 $(".modal-backdrop").remove();
+            });
+        },
+        updateLesson: function updateLesson() {
+            var _this3 = this;
+
+            /* admin/{series_by_id}/lessons/{lesson} */
+
+            axios.put("/admin/" + this.series_id + "/lessons/" + this.lesson_id, this.data).then(function (res) {
+                $("#createlessonModal").modal("hide");
+                $(".modal-backdrop").remove();
+                _this3.$parent.$emit("lessonUpdated", res.data);
             });
         }
     }
@@ -50283,7 +50335,29 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
+              _c("div", { staticClass: "modal-header" }, [
+                _vm.editing
+                  ? _c(
+                      "h5",
+                      { staticClass: "modal-title", attrs: { id: "" } },
+                      [
+                        _vm._v(
+                          "\n                        Update lesson\n                    "
+                        )
+                      ]
+                    )
+                  : _c(
+                      "h5",
+                      { staticClass: "modal-title", attrs: { id: "" } },
+                      [
+                        _vm._v(
+                          "\n                        Create lesson\n                    "
+                        )
+                      ]
+                    ),
+                _vm._v(" "),
+                _vm._m(0)
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "form-group" }, [
@@ -50401,19 +50475,33 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.saveLesson }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Save Lesson\n                    "
+                _vm.editing
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: { click: _vm.updateLesson }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Update Lesson\n                    "
+                        )
+                      ]
                     )
-                  ]
-                )
+                  : _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: { click: _vm.saveLesson }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Save Lesson\n                    "
+                        )
+                      ]
+                    )
               ])
             ])
           ]
@@ -50427,24 +50515,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "modal-title", attrs: { id: "" } }, [
-        _vm._v("\n                        Create lesson\n                    ")
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true
@@ -50504,7 +50586,20 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _vm._m(0, true)
+            _c("span", { staticClass: "badge badge-primary badge-pill" }, [
+              _c("i", {
+                staticClass: "fa fa-edit",
+                attrs: {
+                  "data-toggle": "modal",
+                  "data-target": "#createlessonModal"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.updateLesson(lesson)
+                  }
+                }
+              })
+            ])
           ])
         }),
         0
@@ -50515,16 +50610,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "badge badge-primary badge-pill" }, [
-      _c("i", { staticClass: "fa fa-edit" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

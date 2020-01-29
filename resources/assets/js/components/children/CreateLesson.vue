@@ -11,7 +11,10 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="">
+                        <h5 class="modal-title" id="" v-if="editing">
+                            Update lesson
+                        </h5>
+                        <h5 class="modal-title" id="" v-else>
                             Create lesson
                         </h5>
                         <button
@@ -68,7 +71,16 @@
                         <button
                             type="button"
                             class="btn btn-primary"
+                            @click="updateLesson"
+                            v-if="editing"
+                        >
+                            Update Lesson
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-primary"
                             @click="saveLesson"
+                            v-else
                         >
                             Save Lesson
                         </button>
@@ -82,8 +94,18 @@
 export default {
     mounted() {
         this.$parent.$on("createNewLesson", seriesId => {
+            /* this.data = ""; */
+            this.editing = false;
             this.series_id = seriesId;
-            console.log("creatying");
+        });
+
+        this.$parent.$on("updatingLesson", ({ lesson, sId }) => {
+            this.data = lesson;
+            this.editing = true;
+            /* this.seriesId = seriesid; */
+            /* console.log(sId); */
+            this.series_id = sId;
+            this.lesson_id = lesson.id;
         });
     },
 
@@ -94,8 +116,10 @@ export default {
                 description: "",
                 video_id: "",
                 episode_number: "",
-                series_id: ""
-            }
+                series_id: "",
+                lesson_id: ""
+            },
+            editing: false
         };
     },
 
@@ -108,6 +132,21 @@ export default {
                     this.$parent.$emit("lessonCreated", res.data);
                     $("#createlessonModal").modal("hide");
                     $(".modal-backdrop").remove();
+                });
+        },
+
+        updateLesson() {
+            /* admin/{series_by_id}/lessons/{lesson} */
+
+            axios
+                .put(
+                    `/admin/${this.series_id}/lessons/${this.lesson_id}`,
+                    this.data
+                )
+                .then(res => {
+                    $("#createlessonModal").modal("hide");
+                    $(".modal-backdrop").remove();
+                    this.$parent.$emit("lessonUpdated", res.data);
                 });
         }
     }
