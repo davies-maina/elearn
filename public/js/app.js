@@ -50252,7 +50252,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         this.$parent.$on("createNewLesson", function (seriesId) {
-            /* this.data = ""; */
+            _this.data.title = "";
+            _this.data.description = "";
+            _this.data.video_id = "";
+            _this.data.episode_number = "";
+            _this.data.id = "";
+            _this.data.series_id = "";
             _this.editing = false;
             _this.series_id = seriesId;
         });
@@ -50261,8 +50266,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var lesson = _ref.lesson,
                 sId = _ref.sId;
 
-            _this.data = lesson;
             _this.editing = true;
+            _this.data = lesson;
+
             /* this.seriesId = seriesid; */
             /* console.log(sId); */
             _this.series_id = sId;
@@ -50276,10 +50282,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 description: "",
                 video_id: "",
                 episode_number: "",
-                series_id: "",
-                lesson_id: ""
+                series_id: ""
             },
-            editing: false
+            editing: false,
+            lesson_id: ""
         };
     },
 

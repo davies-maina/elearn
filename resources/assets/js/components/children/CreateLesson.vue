@@ -94,14 +94,20 @@
 export default {
     mounted() {
         this.$parent.$on("createNewLesson", seriesId => {
-            /* this.data = ""; */
+            this.data.title = "";
+            this.data.description = "";
+            this.data.video_id = "";
+            this.data.episode_number = "";
+            this.data.id = "";
+            this.data.series_id = "";
             this.editing = false;
             this.series_id = seriesId;
         });
 
         this.$parent.$on("updatingLesson", ({ lesson, sId }) => {
-            this.data = lesson;
             this.editing = true;
+            this.data = lesson;
+
             /* this.seriesId = seriesid; */
             /* console.log(sId); */
             this.series_id = sId;
@@ -116,10 +122,10 @@ export default {
                 description: "",
                 video_id: "",
                 episode_number: "",
-                series_id: "",
-                lesson_id: ""
+                series_id: ""
             },
-            editing: false
+            editing: false,
+            lesson_id: ""
         };
     },
 

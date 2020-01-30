@@ -76,9 +76,9 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class=""><a href="index.html">Home</a></li>
                         <li class="dropdown"><a href="#">Pages <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
+                           {{--  <ul role="menu" class="sub-menu">
                                 <li><a href="aboutus.html">About</a></li>
                                 <li><a href="aboutus2.html">About 2</a></li>
                                 <li><a href="service.html">Services</a></li>
@@ -87,17 +87,17 @@
                                 <li><a href="contact2.html">Contact us 2</a></li>
                                 <li><a href="404.html">404 error</a></li>
                                 <li><a href="coming-soon.html">Coming Soon</a></li>
-                            </ul>
+                            </ul> --}}
                         </li>                    
-                        <li class="dropdown"><a href="blog.html">Blog <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
+                    <li class="dropdown"><a href="{{route('series.index')}}">All series{{-- <i class="fa fa-angle-down"></i> --}}</a>
+                           {{--  <ul role="menu" class="sub-menu">
                                 <li><a href="blog.html">Blog Default</a></li>
                                 <li><a href="blogtwo.html">Timeline Blog</a></li>
                                 <li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
                                 <li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
                                 <li><a href="blogfour.html">Blog Masonary</a></li>
                                 <li><a href="blogdetails.html">Blog Details</a></li>
-                            </ul>
+                            </ul> --}}
                         </li>
                         <li class="dropdown"><a href="portfolio.html">Portfolio <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
