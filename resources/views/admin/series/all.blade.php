@@ -25,7 +25,7 @@
             <tr>
             <td>{{$eachSeries->title}}</td>
             <td>
-                <a href="" class="btn btn-default">Edit</a>
+            <a href="{{route('series.edit',$eachSeries->slug)}}" class="btn btn-default">Edit</a>
             </td>
              <td>
                 <a href="" class="btn btn-danger">Delete</a>

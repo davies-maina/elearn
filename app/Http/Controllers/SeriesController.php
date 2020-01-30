@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Series;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateSeriesRequest;
+use App\Http\Requests\EditSeriesReq;
 
 class SeriesController extends Controller
 {
@@ -15,7 +16,7 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series=Series::all();
+        $series = Series::all();
         return view('admin.series.all')->withSeries($series);
     }
 
@@ -72,9 +73,9 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Series $series)
     {
-        //
+        return view('admin.series.edit')->withSeries($series);
     }
 
     /**
@@ -84,9 +85,30 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditSeriesReq $request, Series $series)
     {
-        //
+        /* dd($request->all()); */
+        if ($request->hasFile('image')) {
+            $uploadedImage = $request->image;
+            $imageName = str_slug($request->title) . '.' . $uploadedImage->getClientOriginalExtension();
+            $series->image_url = $image = $uploadedImage->storePubliclyAs('series', $imageName);
+        }
+
+        /*  $series = [
+
+            'title' => $request->title,
+            'description' => $request->description,
+            'slug' => str_slug($request->title),
+            'image_url' => 'series/' . $imageName
+        ]; */
+
+        $series->title = $request->title;
+        $series->description = $request->description;
+        $series->slug = str_slug($request->title);
+
+        $series->save();
+
+        return redirect()->route('series.index');
     }
 
     /**
