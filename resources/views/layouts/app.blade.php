@@ -76,7 +76,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class=""><a href="index.html">Home</a></li>
+                        <li class=""><a href="/">Home</a></li>
                         <li class="dropdown"><a href="#">Pages <i class="fa fa-angle-down"></i></a>
                            {{--  <ul role="menu" class="sub-menu">
                                 <li><a href="aboutus.html">About</a></li>
@@ -111,7 +111,7 @@
                         </li> 
                         
                         @if (auth()->check())
-                    <li><a href="shortcodes.html ">{{auth()->user()->name}}</a></li>
+                    <li><a href="shortcodes.html ">Hey, {{auth()->user()->name}}</a></li>
                         @endif
                                             
                     </ul>

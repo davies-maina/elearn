@@ -33,12 +33,12 @@ Route::get('/logout', function () {
     dd($series);
 }); */  //testing to see route model binding works
 
-Route::middleware('admin')->prefix('admin')->group(function () {
+/* Route::middleware('admin')->prefix('admin')->group(function () { */
 
-    Route::resource('series', 'SeriesController');
+/*  Route::resource('series', 'SeriesController');
 
-    Route::resource('{series_by_id}/lessons', 'LessonsController'); //explicit  route binding
-});
+    Route::resource('{series_by_id}/lessons', 'LessonsController'); */ //explicit  route binding
+/* }); */
 
 Auth::routes();
 
