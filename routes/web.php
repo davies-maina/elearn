@@ -13,9 +13,7 @@ use App\Series;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontEndController@welcome');
 
 
 Route::get('/register', function () {

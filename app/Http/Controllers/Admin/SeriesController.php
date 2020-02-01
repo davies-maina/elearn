@@ -41,7 +41,7 @@ class SeriesController extends Controller
     {
         $uploadedImage = $request->image;
         $imageName = str_slug($request->title) . '.' . $uploadedImage->getClientOriginalExtension();
-        $image = $uploadedImage->storePubliclyAs('series', $imageName);
+        $image = $uploadedImage->storePubliclyAs('public/series', $imageName);
 
         $series = Series::create([
 
@@ -92,7 +92,7 @@ class SeriesController extends Controller
         if ($request->hasFile('image')) {
             $uploadedImage = $request->image;
             $imageName = str_slug($request->title) . '.' . $uploadedImage->getClientOriginalExtension();
-            $series->image_url = $image = $uploadedImage->storePubliclyAs('series', $imageName);
+            $series->image_url = $image = $uploadedImage->storePubliclyAs('public/series', $imageName);
         }
 
         /*  $series = [

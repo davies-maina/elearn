@@ -14,6 +14,7 @@
                         @guest
                             <a href="#loginModal" class="btn btn-common" data-toggle="modal">Log in</a>
                         @endguest
+                        
                     </div>
                     <img src="/images/home/slider/hill.png" class="slider-hill" alt="slider image">
                     <img src="/images/home/slider/house.png" class="slider-house" alt="slider image">
@@ -29,6 +30,32 @@
     @endsection
 
     @section('content')
+    @auth
+        
+    
+    <section id="features" class="my-3">
+        <div class="container">
+            <div><h1 class="text-center my-2">Featured series</h1></div>
+            <div class="row">
+                @forelse ($series as $eachSeries)
+                    <div class="single-features">
+                    <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                        <img src="{{asset('storage/' . $eachSeries->image_url)}}" class="img-responsive" alt="">
+                    </div>
+                    <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <h2>{{$eachSeries->title}}</h2>
+                        <P>{{$eachSeries->description}}</P>
+                        {{-- <P>{{$eachSeries->image_url}}</P> --}}
+                    </div>
+                </div>
+                @empty
+                    
+                @endforelse
+                
+            </div>
+        </div>
+    </section>
+    @endauth
         <div class="row">
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <div class="single-service">

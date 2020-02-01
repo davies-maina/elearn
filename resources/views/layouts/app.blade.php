@@ -111,10 +111,17 @@
                         </li> 
                         
                         @if (auth()->check())
-                    <li><a href="shortcodes.html ">Hey, {{auth()->user()->name}}</a></li>
-                        @endif
+                    <li class="dropdown"><a href="#">{{auth()->user()->name}}<i class="fa fa-angle-down"></i></a>
+                    
+                    <ul role="menu" class="sub-menu">
+                    <li><a href="/logout">Logout</a></li>
+                                
+                            </ul>
+                    </li>
                                             
                     </ul>
+                        @endif
+
                 </div>
                 <div class="search">
                     <form role="form">
