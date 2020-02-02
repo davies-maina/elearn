@@ -1,6 +1,7 @@
 <?php
 
 use App\Series;
+use Illuminate\Support\Facades\Redis;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,21 @@ use App\Series;
 |
 */
 
-Route::get('/', 'FrontEndController@welcome');
+Route::get('/redis', function () {
+
+    /* Redis::set('friend', 'momo'); */ //key:value -string
+    /* dd(Redis::get('friend')); */
+
+
+    /* Redis::lpush('frameworks', ['vue', 'laravel']); //key:value -list
+    dd(Redis::lrange('frameworks', 0, -1)); */
+
+
+    Redis::sadd('frontend-frameworks', ['angular', 'ember']); //key:value -set //similar to lists but doesn't repeat
+    dd(Redis::smembers('frontend-frameworks'));
+});
+
+/* Route::get('/', 'FrontEndController@welcome'); */
 
 
 Route::get('/register', function () {
