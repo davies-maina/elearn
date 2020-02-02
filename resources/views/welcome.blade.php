@@ -40,7 +40,7 @@
                 @forelse ($series as $eachSeries)
                     <div class="single-features">
                     <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="{{asset('storage/' . $eachSeries->image_url)}}" class="img-responsive" alt="">
+                        <img src="{{$eachSeries->image_path}}" class="img-responsive" alt="">
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
                     <h2>{{$eachSeries->title}}</h2>
