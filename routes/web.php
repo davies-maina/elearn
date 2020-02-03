@@ -28,7 +28,7 @@ Route::get('/redis', function () {
     dd(Redis::smembers('frontend-frameworks'));
 });
 
-/* Route::get('/', 'FrontEndController@welcome'); */
+Route::get('/', 'FrontEndController@welcome');
 
 
 Route::get('/register', function () {

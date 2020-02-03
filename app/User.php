@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -42,5 +43,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return in_array($this->email, config('elearn.administrators'));
+    }
+
+    public function finishLesson($lesson)
+    {
+        /* dd("user:{$this->id}:series{$lesson->series->id}"); */
+        Redis::sadd("user:{$this->id}:series:{$lesson->series->id}", $lesson->id); //adding to a set
     }
 }
