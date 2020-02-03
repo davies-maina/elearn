@@ -15,20 +15,23 @@ class UserTest extends TestCase
     use RefreshDatabase;
     public function test_a_user_can_finish_lesson()
     {
-
+        $this->flushRedis();
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $series = factory(Series::class)->create();
-        $lesson = factory(Lesson::class)->create([
+        /* $series = factory(Series::class)->create(); */
+        $lesson = factory(Lesson::class)->create();
 
-            'series_id' => $series->id
+        $lesson2 = factory(Lesson::class)->create([
+
+            'series_id' => 1
         ]);
 
         $user->finishLesson($lesson);
+        $user->finishLesson($lesson2);
         $this->assertEquals(
 
             Redis::smembers('user:1:series:1'),
-            [1]
+            [1, 2]
         );
     }
 }
