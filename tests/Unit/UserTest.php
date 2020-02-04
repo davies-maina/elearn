@@ -33,5 +33,37 @@ class UserTest extends TestCase
             Redis::smembers('user:1:series:1'),
             [1, 2]
         );
+
+        $this->assertEquals(
+
+            $user->getNumberOfFinishedLessonsInSeries($lesson->series),
+            2
+        );
+    }
+
+    public function test_percentage_completed_series_for_user()
+    {
+
+        $this->flushRedis();
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        /* $series = factory(Series::class)->create(); */
+        $lesson = factory(Lesson::class)->create();
+        factory(Lesson::class)->create(['series_id' => 1]);
+        factory(Lesson::class)->create(['series_id' => 1]);
+
+        $lesson2 = factory(Lesson::class)->create([
+
+            'series_id' => 1
+        ]);
+
+        $user->finishLesson($lesson);
+        $user->finishLesson($lesson2);
+
+        $this->assertEquals(
+
+            $user->percentageSeriesCompleted($lesson->series),
+            50
+        );
     }
 }
