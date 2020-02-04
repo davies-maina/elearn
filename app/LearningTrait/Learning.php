@@ -29,4 +29,9 @@ trait Learning
         /*  return count(Redis::smembers("user:{$this->id}:series:{$series->id}")); */
         return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
     }
+
+    public function hasStartedSeries($series)
+    {
+        return $this->getNumberOfFinishedLessonsInSeries($series) > 0;
+    }
 }

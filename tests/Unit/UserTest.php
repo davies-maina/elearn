@@ -66,4 +66,24 @@ class UserTest extends TestCase
             50
         );
     }
+
+    public function test_can_know_a_user_has_started_a_series()
+    {
+        $this->flushRedis();
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        /* $series = factory(Series::class)->create(); */
+        $lesson = factory(Lesson::class)->create();
+        factory(Lesson::class)->create(['series_id' => 1]);
+        factory(Lesson::class)->create(['series_id' => 1]);
+
+        $lesson2 = factory(Lesson::class)->create([
+
+            'series_id' => 1
+        ]);
+        $lesson3 = factory(Lesson::class)->create();
+        $user->finishLesson($lesson2);
+        $this->assertTrue($user->hasStartedSeries($lesson->series));
+        $this->assertFalse($user->hasStartedSeries($lesson3->series));
+    }
 }
