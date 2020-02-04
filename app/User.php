@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\LearningTrait\Learning;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Learning;
 
     /**
      * The attributes that are mass assignable.
@@ -43,28 +44,5 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return in_array($this->email, config('elearn.administrators'));
-    }
-
-    public function finishLesson($lesson)
-    {
-        /* dd("user:{$this->id}:series{$lesson->series->id}"); */
-        Redis::sadd("user:{$this->id}:series:{$lesson->series->id}", $lesson->id); //adding to a set
-    }
-
-
-
-    public function percentageSeriesCompleted($series)
-    {
-
-        $numberOfLessonsInSeries = $series->lessons->count();
-        $numberOfFinishedLessons = $this->getNumberOfFinishedLessonsInSeries($series);
-        return ($numberOfFinishedLessons / $numberOfLessonsInSeries) * 100;
-    }
-
-    public function getNumberOfFinishedLessonsInSeries($series)
-    {
-
-        /*  return count(Redis::smembers("user:{$this->id}:series:{$series->id}")); */
-        return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
     }
 }
