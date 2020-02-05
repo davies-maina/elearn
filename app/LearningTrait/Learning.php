@@ -2,6 +2,7 @@
 
 namespace App\LearningTrait;
 
+use App\Lesson;
 use Illuminate\Support\Facades\Redis;
 
 
@@ -27,11 +28,27 @@ trait Learning
     {
 
         /*  return count(Redis::smembers("user:{$this->id}:series:{$series->id}")); */
-        return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
+        return count($this->getCompletedLessonsInSeries($series));
+    }
+
+    public function getCompletedLessonsInSeries($series)
+    {
+
+        return Redis::smembers("user:{$this->id}:series:{$series->id}");
     }
 
     public function hasStartedSeries($series)
     {
         return $this->getNumberOfFinishedLessonsInSeries($series) > 0;
+    }
+
+    public function getCompletedLessons($series)
+    {
+        $completedLessons = $this->getCompletedLessonsInSeries($series);
+
+        return collect($completedLessons)->map(function ($lesson) {
+
+            return Lesson::find($lesson);
+        });
     }
 }
