@@ -17,8 +17,12 @@
     <p class="lead" style="color:white">{{$series->description}}</p>
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  @if (auth()->user())
-      @if (auth()->user()->hasStartedSeries($series))
+  
+      
+  
+  @auth
+      {{-- @if (auth()->user()->hasStartedSeries($series)) --}}
+      @hasStartedSeries($series)
           <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">Resume</a>
   </p>
@@ -26,14 +30,14 @@
       <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">Begin</a>
   </p>
-   @endif
+   @endhasStartedSeries
   @else
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">Begin learning</a>
   </p>
           
      
-  @endif
+  @endauth
 </div>
   </div>
     
