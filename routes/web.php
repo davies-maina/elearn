@@ -29,6 +29,7 @@ Route::get('/redis', function () {
 });
 
 Route::get('/', 'FrontEndController@welcome');
+Route::get('/series/{series}', 'FrontendController@showSeries')->name('series');
 
 
 Route::get('/register', function () {

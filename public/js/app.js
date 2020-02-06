@@ -297,6 +297,9 @@ function forEach(obj, fn) {
   }
 }
 
+
+$(function () { objectFitImages() });
+
 /**
  * Accepts varargs expecting each argument to be an object, then
  * immutably merges the properties of each object and returns result.

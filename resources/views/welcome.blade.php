@@ -40,13 +40,19 @@
                 @forelse ($series as $eachSeries)
                     <div class="single-features">
                     <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="{{$eachSeries->image_path}}" class="img-responsive" alt="">
+                        {{-- <div class="overlay p-6 text-white"></div> --}}
+                        <img src="{{$eachSeries->image_path}}" class="img-responsive " alt="">
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
                     <h2>{{$eachSeries->title}}</h2>
                         <P>{{$eachSeries->description}}</P>
                         {{-- <P>{{$eachSeries->image_url}}</P> --}}
                     </div>
+                   
+                            
+                            <a href="{{route('series', $eachSeries->slug)}}" class="btn btn-common">Read more</a>
+                             
+                        
                 </div>
                 @empty
                     
