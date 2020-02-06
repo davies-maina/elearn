@@ -44,11 +44,14 @@ trait Learning
 
     public function getCompletedLessons($series)
     {
-        $completedLessons = $this->getCompletedLessonsInSeries($series);
+        /*  $completedLessons = $this->getCompletedLessonsInSeries($series);
 
         return collect($completedLessons)->map(function ($lesson) {
 
             return Lesson::find($lesson);
-        });
+        }); */
+
+        return Lesson::whereIn('id', $this->getCompletedLessonsInSeries($series))->get();
+        //this approach will reduce number of queries made to the db, thus improving performance ~Davies
     }
 }
