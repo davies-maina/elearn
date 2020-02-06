@@ -29,6 +29,8 @@ Route::get('/redis', function () {
 });
 
 Route::get('/', 'FrontEndController@welcome');
+Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');
+Route::get('/series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch');
 Route::get('/series/{series}', 'FrontendController@showSeries')->name('series');
 
 
@@ -40,6 +42,7 @@ Route::get('/register/confirm', 'ConfirmEmailController@index')->name('confirm_e
 
 Route::get('/logout', function () {
     auth()->logout();
+    return redirect('/');
 });
 
 /* Route::get('{series_by_id}', function (Series $series) {

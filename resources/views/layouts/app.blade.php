@@ -88,7 +88,10 @@
                                 <li><a href="404.html">404 error</a></li>
                                 <li><a href="coming-soon.html">Coming Soon</a></li>
                             </ul> --}}
-                        </li>                    
+                        </li>   
+                        @auth
+                            
+                                     
                     <li class="dropdown"><a href="{{route('series.index')}}">All series{{-- <i class="fa fa-angle-down"></i> --}}</a>
                            {{--  <ul role="menu" class="sub-menu">
                                 <li><a href="blog.html">Blog Default</a></li>
@@ -99,15 +102,15 @@
                                 <li><a href="blogdetails.html">Blog Details</a></li>
                             </ul> --}}
                         </li>
-                        <li class="dropdown"><a href="portfolio.html">Portfolio <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
+                    <li class="dropdown"><a href="{{route('series.create')}}">Create series</a>
+                            {{-- <ul role="menu" class="sub-menu">
                                 <li><a href="portfolio.html">Portfolio Default</a></li>
                                 <li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>
                                 <li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>
                                 <li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>
                                 <li><a href="portfoliothree.html">2 Columns</a></li>
                                 <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                            </ul>
+                            </ul> --}}
                         </li> 
                         
                         @if (auth()->check())
@@ -123,6 +126,7 @@
                         @endif
 
                 </div>
+                @endauth
                 <div class="search">
                     <form role="form">
                         <i class="fa fa-search"></i>

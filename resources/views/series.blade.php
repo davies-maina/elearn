@@ -16,7 +16,7 @@
     <h1 class="display-4" style="opacity:1;color:white">{{$series->title}}</h1>
     <p class="lead" style="color:white">{{$series->description}}</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  {{-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> --}}
   
       
   
@@ -24,11 +24,11 @@
       {{-- @if (auth()->user()->hasStartedSeries($series)) --}}
       @hasStartedSeries($series)
           <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Resume</a>
+    <a class="btn btn-primary btn-lg" href="{{route('series.learning',$series->slug)}}">Resume</a>
   </p>
       @else
       <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Begin</a>
+      <a class="btn btn-primary btn-lg" href="" role="button">Begin</a>
   </p>
    @endhasStartedSeries
   @else

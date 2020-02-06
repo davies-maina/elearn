@@ -23,7 +23,7 @@
     <tbody>
         @forelse ($series as $eachSeries)
             <tr>
-            <td>{{$eachSeries->title}}</td>
+            <td><a href="{{route('series.show', $eachSeries->slug)}}">{{$eachSeries->title}}</a></td>
             <td>
             <a href="{{route('series.edit',$eachSeries->slug)}}" class="btn btn-default">Edit</a>
             </td>
