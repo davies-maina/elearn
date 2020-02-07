@@ -50072,7 +50072,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
 
         this.$on("lessonUpdated", function (data) {
-            _this.lessons.push(data);
+            /* this.lessons.push(data); */
+            var lessonIndex = _this.lessons.findIndex(function (l) {
+                return data.id == l.id;
+            });
+            _this.lessons.splice(lessonIndex, 1, data);
         });
     },
     data: function data() {
@@ -50269,12 +50273,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 sId = _ref.sId;
 
             _this.editing = true;
-            _this.data = lesson;
 
             /* this.seriesId = seriesid; */
             /* console.log(sId); */
             _this.series_id = sId;
             _this.lesson_id = lesson.id;
+            _this.data = lesson;
         });
     },
     data: function data() {
@@ -50688,14 +50692,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ["rawlessons"],
     mounted: function mounted() {
         var player = new __WEBPACK_IMPORTED_MODULE_0__vimeo_player__["a" /* default */]("handstick");
-        player.on("play", function () {
+        /* play data() {
+        return {
+            lesson: JSON.parse(this.rawLessons)
+        };
+        }er.on("play", () => {
             console.log("playing");
-        });
+        }); */
+    },
+    data: function data() {
+        return {
+            lesson: JSON.parse(this.rawlessons)
+        };
     }
 });
 
@@ -50707,18 +50725,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm.lesson
+      ? _c("div", {
+          attrs: { "data-vimeo-id": _vm.lesson.video_id, id: "handstick" }
+        })
+      : _vm._e()
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { attrs: { "data-vimeo-id": "19231868", id: "handstick" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

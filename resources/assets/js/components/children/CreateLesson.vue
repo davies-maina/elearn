@@ -106,12 +106,12 @@ export default {
 
         this.$parent.$on("updatingLesson", ({ lesson, sId }) => {
             this.editing = true;
-            this.data = lesson;
 
             /* this.seriesId = seriesid; */
             /* console.log(sId); */
             this.series_id = sId;
             this.lesson_id = lesson.id;
+            this.data = lesson;
         });
     },
 

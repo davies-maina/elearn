@@ -17,7 +17,7 @@
 <div class="container">
   <div class="row gap-y text-center">
     <div class="col-12">
-      <v-player></v-player>
+    <v-player rawlessons="{{$lesson}}"></v-player>
     </div>
   </div>
 </div>

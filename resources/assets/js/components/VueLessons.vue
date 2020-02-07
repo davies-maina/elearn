@@ -52,7 +52,11 @@ export default {
         });
 
         this.$on("lessonUpdated", data => {
-            this.lessons.push(data);
+            /* this.lessons.push(data); */
+            let lessonIndex = this.lessons.findIndex(l => {
+                return data.id == l.id;
+            });
+            this.lessons.splice(lessonIndex, 1, data);
         });
     },
     data() {
