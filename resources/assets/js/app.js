@@ -20,6 +20,8 @@ Vue.component("login-modal", require("./components/LoginModal.vue"));
 
 Vue.component("vue-lessons", require("./components/VueLessons.vue"));
 
+Vue.component("v-player", require("./components/Player.vue"));
+
 const app = new Vue({
     el: "#app"
 });

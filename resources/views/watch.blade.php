@@ -14,5 +14,11 @@
 
 @section('content')
 
-{{-- <vue-lessons dblessons="{{$series->lessons}}" series-id="{{$series->id}}"></vue-lessons> --}}
+<div class="container">
+  <div class="row gap-y text-center">
+    <div class="col-12">
+      <v-player></v-player>
+    </div>
+  </div>
+</div>
 @endsection
