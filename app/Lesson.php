@@ -26,6 +26,8 @@ class Lesson extends Model
     public function getPreviousLesson()
     {
 
+
+
         return $this->series->lessons()->where('episode_number', '<', $this->episode_number)
             ->orderBy('episode_number', 'desc')
             ->first();

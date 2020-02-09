@@ -18,6 +18,15 @@
   <div class="row gap-y text-center">
     <div class="col-12">
     <v-player rawlessons="{{$lesson}}"></v-player>
+    <div>
+      @if ($lesson->getPreviousLesson())
+       <a href="{{route('series.watch',['series' => $series->slug, 'lesson' => $lesson->getPreviousLesson()->id ])}}" class="btn btn-primary">Previous lesson</a> 
+    @endif
+    
+    @if ($lesson->getNextLesson())
+        <a href="{{route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id ])}}" class="btn btn-primary">Next lesson</a>
+    @endif
+    </div>
     </div>
   </div>
 </div>
