@@ -27,7 +27,7 @@
     </div>
     <div class="col-6">
       
-    <v-player rawlessons="{{$lesson}}"></v-player>
+    <v-player rawlessons="{{$lesson}}" nextlesson="{{route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id ])}}"></v-player>
     <div>
       @if ($lesson->getPreviousLesson())
        <a href="{{route('series.watch',['series' => $series->slug, 'lesson' => $lesson->getPreviousLesson()->id ])}}" class="btn btn-primary">Previous lesson</a> 
