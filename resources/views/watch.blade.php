@@ -13,7 +13,10 @@
 
 
 @section('content')
-
+@php
+    $nextLesson=$lesson->getNextLesson();
+    $previousLesson=$lesson->getPreviousLesson();
+@endphp
 <div class="container">
   <div class="row gap-y text-center">
      <div class="col-6">
@@ -27,14 +30,20 @@
     </div>
     <div class="col-6">
       
-    <v-player rawlessons="{{$lesson}}" nextlesson="{{route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id ])}}"></v-player>
+    <v-player rawlessons="{{$lesson}}" 
+    @if ($nextLesson)
+        
+    
+    nextlesson="{{route('series.watch', ['series' => $series->slug, 'lesson' => $nextLesson->id ])}}">
+      @endif
+  </v-player>
     <div>
-      @if ($lesson->getPreviousLesson())
-       <a href="{{route('series.watch',['series' => $series->slug, 'lesson' => $lesson->getPreviousLesson()->id ])}}" class="btn btn-primary">Previous lesson</a> 
+      @if ($previousLesson)
+       <a href="{{route('series.watch',['series' => $series->slug, 'lesson' => $previousLesson->id ])}}" class="btn btn-primary">Previous lesson</a> 
     @endif
     
-    @if ($lesson->getNextLesson())
-        <a href="{{route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id ])}}" class="btn btn-primary">Next lesson</a>
+    @if ($nextLesson)
+        <a href="{{route('series.watch', ['series' => $series->slug, 'lesson' => $nextLesson->id ])}}" class="btn btn-primary">Next lesson</a>
     @endif
     </div>
     

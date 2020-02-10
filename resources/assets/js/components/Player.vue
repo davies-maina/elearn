@@ -36,13 +36,21 @@ export default {
 
     methods: {
         displayVideoEndedText() {
-            Swal.fire({
-                text: "You have finished this lesson",
-                icon: "success",
-                confirmButtonText: "OK"
-            }).then(() => {
-                window.location = this.nextlesson;
-            });
+            if (this.nextlesson) {
+                Swal.fire({
+                    text: "You have finished this lesson",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                }).then(() => {
+                    window.location = this.nextlesson;
+                });
+            } else {
+                Swal.fire({
+                    text: "Congrats! you completed this series!",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
+            }
         }
     }
 };

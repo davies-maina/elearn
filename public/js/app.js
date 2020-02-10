@@ -50730,13 +50730,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         displayVideoEndedText: function displayVideoEndedText() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.fire({
-                text: "You have finished this lesson",
-                icon: "success",
-                confirmButtonText: "OK"
-            }).then(function () {
-                window.location = _this2.nextlesson;
-            });
+            if (this.nextlesson) {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.fire({
+                    text: "You have finished this lesson",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                }).then(function () {
+                    window.location = _this2.nextlesson;
+                });
+            } else {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a.fire({
+                    text: "Congrats! you completed this series!",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
+            }
         }
     }
 });
