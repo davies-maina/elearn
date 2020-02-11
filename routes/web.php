@@ -32,6 +32,7 @@ Route::get('/', 'FrontEndController@welcome');
 Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');
 Route::get('/series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch');
 Route::get('/series/{series}', 'FrontendController@showSeries')->name('series');
+Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
 
 
 Route::get('/register', function () {

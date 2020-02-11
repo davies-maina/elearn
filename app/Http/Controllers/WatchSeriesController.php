@@ -27,4 +27,13 @@ class WatchSeriesController extends Controller
             'lesson' => $lesson
         ]);
     }
+
+    public function completeLesson(Lesson $lesson)
+    {
+        auth()->user()->finishLesson($lesson);
+        return response()->json([
+
+            'status' => 'ok'
+        ]);
+    }
 }

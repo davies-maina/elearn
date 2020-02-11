@@ -54,4 +54,9 @@ trait Learning
         return Lesson::whereIn('id', $this->getCompletedLessonsInSeries($series))->get();
         //this approach will reduce number of queries made to the db, thus improving performance ~Davies
     }
+
+    public function hasCompletedLesson($lesson)
+    {
+        return in_array($lesson->id, $this->getCompletedLessonsInSeries($lesson->series));
+    }
 }
