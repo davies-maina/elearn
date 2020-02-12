@@ -60,20 +60,33 @@ trait Learning
     {
         return in_array($lesson->id, $this->getCompletedLessonsInSeries($lesson->series));
     }
-
-    public function getSeriesBeingWatched()
+    public function getSeriesBeingWatchedIds()
     {
+
+
         $keys = Redis::keys("user:{$this->id}:series:*"); //searching Redis store
         $seriesIdds = [];
         foreach ($keys as $key) :
             $seriesId = explode(':', $key)[3];
             array_push($seriesIdds, $seriesId);
         endforeach;
-        $seriesCollection = collect($seriesIdds);
-        return $seriesCollection->map(function ($id) {
+
+        return $seriesIdds;
+    }
+
+    public function getSeriesBeingWatched()
+    {
+        /* $keys = Redis::keys("user:{$this->id}:series:*"); */ //searching Redis store
+        /* $seriesIdds = [];
+        foreach ($keys as $key) :
+            $seriesId = explode(':', $key)[3];
+            array_push($seriesIdds, $seriesId);
+        endforeach; */
+        return collect($this->getSeriesBeingWatchedIds())
+            ->map(function ($id) {
 
 
-            return Series::find($id);
-        });
+                return Series::find($id);
+            });
     }
 }
