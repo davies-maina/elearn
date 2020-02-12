@@ -3,8 +3,11 @@
 @section('header')
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-  <h1 class="display-4">Name</h1>
-  <p class="lead">Title</p>
+  <h1 class="display-4">{{auth()->user()->name}}</h1>
+  {{-- <p class="lead">Username</p> --}}
+  
+  <h1 class="display-4">{{$user->getNumberOfCompletedLessons()}}</h1>
+  <p class="lead">Lessons completed</p>
   </div>
 </div>
 @stop
@@ -18,23 +21,27 @@
 
 
         <div class="row gap-5">
-           
+             @forelse ($series as $eachSeries)
                 <div class="card mb-30">
                 <div class="row">
                     <div class="col-12 col-md-4 align-self-center">
-                    <a href=""><img src="" alt="..."></a>
+                    <a href=""><img src="{{$eachSeries->image_path}}" alt="..."></a>
                     </div>
 
                     <div class="col-12 col-md-8">
                     <div class="card-block">
-                        <h4 class="card-title"></h4>
+                        <h4 class="card-title">{{$eachSeries->title}}</h4>
+                        
                     
-                        <p class="card-text"></p>
+                    <p class="card-text">{{$eachSeries->description}}</p>
                         <a class="fw-600 fs-12" href="">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                     </div>
                     </div>
                 </div>
                 </div>
+                 @empty
+                    
+                @endforelse
          
 
         </div>

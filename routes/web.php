@@ -34,7 +34,7 @@ Route::get('/series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson
 Route::get('/series/{series}', 'FrontendController@showSeries')->name('series');
 Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
 
-Route::get('/profile', 'ProfileController@index');
+Route::get('/profile/{user}', 'ProfileController@index');
 Route::get('/register', function () {
     return view('register');
 });
