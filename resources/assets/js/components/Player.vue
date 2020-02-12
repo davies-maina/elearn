@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <div
             :data-vimeo-id="lesson.video_id"
             id="handstick"
@@ -24,7 +24,7 @@ export default {
         }); */
 
         player.on("ended", () => {
-            this.displayVideoEndedText();
+            this.completeLesson();
         });
     },
 
@@ -51,6 +51,14 @@ export default {
                     confirmButtonText: "OK"
                 });
             }
+        },
+
+        completeLesson() {
+            axios
+                .post(`/series/complete-lesson/${this.lesson.id}`, {})
+                .then(res => {
+                    this.displayVideoEndedText();
+                });
         }
     }
 };

@@ -28,12 +28,12 @@
   </p>
       @else
       <p class="lead">
-      <a class="btn btn-primary btn-lg" href="" role="button">Begin</a>
+      <a class="btn btn-primary btn-lg" href="{{route('series.learning',$series->slug)}}" role="button">Begin</a>
   </p>
    @endhasStartedSeries
   @else
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Begin learning</a>
+    <a class="btn btn-primary btn-lg" href="{{route('series.learning',$series->slug)}}" role="button">Begin learning</a>
   </p>
           
      

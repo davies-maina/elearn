@@ -128,4 +128,28 @@ class UserTest extends TestCase
         $this->assertTrue($user->hasCompletedLesson($lesson));
         $this->assertFalse($user->hasCompletedLesson($lesson2));
     }
+    public function test_can_get_all_series_watched_by_user()
+    {
+
+        $this->flushRedis();
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+
+        $lesson = factory(Lesson::class)->create();
+        $lesson2 = factory(Lesson::class)->create(['series_id' => 1]);
+        $lesson3 = factory(Lesson::class)->create();
+        $lesson4 = factory(Lesson::class)->create(['series_id' => 2]);
+        $lesson5 = factory(Lesson::class)->create();
+        $lesson6 = factory(Lesson::class)->create(['series_id' => 3]);
+        $user->finishLesson($lesson);
+        $user->finishLesson($lesson3);
+
+        $startedSeries = $user->getSeriesBeingWatched();
+        $this->assertInstanceOf(Collection::class, $startedSeries);
+        $this->assertInstanceOf(Series::class, $startedSeries->random());
+        $idsOfStaredSeries = $startedSeries->pluck('id')->all();
+        $this->assertTrue(in_array($lesson->series->id, $idsOfStaredSeries));
+        $this->assertTrue(in_array($lesson3->series->id, $idsOfStaredSeries));
+        $this->assertFalse(in_array($lesson6->series->id, $idsOfStaredSeries));
+    }
 }

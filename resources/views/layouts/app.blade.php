@@ -20,7 +20,9 @@
     <link href="/css/animate.min.css" rel="stylesheet"> 
     <link href="/css/lightbox.css" rel="stylesheet"> 
 	<link href="/css/main.css" rel="stylesheet">
-	<link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="{{ asset('/css/thesaas.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
     <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>

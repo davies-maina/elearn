@@ -20,21 +20,37 @@
 <div class="container">
   <div class="row gap-y text-center">
      <div class="col-6">
-      <ul class="list-group">
+      <ul class="list-group" >
       @foreach ($series->getOrderedLessons() as $eachLesson)
-          <li class="list-group-item">
+          <li class="list-group-item 
+          
+         @if($eachLesson->id==$lesson->id)
+
+           disabled
+         @endif
+
+          
+          
+          ">
+           @if($eachLesson->id==$lesson->id)
+
+           <b><small>Showing</small></b>
+         @endif
+          @if (auth()->user()->hasCompletedLesson($eachLesson))
+              <b><small>Completed</small></b>
+          @endif
           <a href="{{route('series.watch',['series'=>$series->slug,'lesson'=>$eachLesson->id])}}">{{$eachLesson->title}}</a>
           </li>
       @endforeach
       </ul>
     </div>
-    <div class="col-6">
+   
       
     <v-player rawlessons="{{$lesson}}" 
     @if ($nextLesson)
         
     
-    nextlesson="{{route('series.watch', ['series' => $series->slug, 'lesson' => $nextLesson->id ])}}">
+     nextlesson="{{route('series.watch', ['series' => $series->slug, 'lesson' => $nextLesson->id ])}}">
       @endif
   </v-player>
     <div>
@@ -47,7 +63,7 @@
     @endif
     </div>
     
-    </div>
+    
    
   </div>
 </div>
