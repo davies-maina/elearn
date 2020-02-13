@@ -100,4 +100,16 @@ trait Learning
         endforeach;
         return $res;
     }
+
+    public function getNextLessonToWatch($series)
+    {
+
+        $lessonIds = $this->getCompletedLessonsInSeries($series);
+        $lessonId = end($lessonIds);
+        return Lesson::find(
+
+            $lessonId
+
+        )->getNextLesson();
+    }
 }

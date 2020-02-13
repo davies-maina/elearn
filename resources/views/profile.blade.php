@@ -34,7 +34,7 @@
                         
                     
                     <p class="card-text">{{$eachSeries->description}}</p>
-                        <a class="fw-600 fs-12" href="">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                        <a class="fw-600 fs-12" href="{{route('series', $eachSeries->slug)}}">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                     </div>
                     </div>
                 </div>
