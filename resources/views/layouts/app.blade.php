@@ -79,7 +79,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class=""><a href="/">Home</a></li>
-                        <li class="dropdown"><a href="#">Pages <i class="fa fa-angle-down"></i></a>
+                        {{-- <li class="dropdown"><i href="#">Pages <i class="fa fa-angle-down"></i></i> --}}
                            {{--  <ul role="menu" class="sub-menu">
                                 <li><a href="aboutus.html">About</a></li>
                                 <li><a href="aboutus2.html">About 2</a></li>
@@ -92,7 +92,7 @@
                             </ul> --}}
                         </li>   
                         @auth
-                            
+                            @admin
                                      
                     <li class="dropdown"><a href="{{route('series.index')}}">All series{{-- <i class="fa fa-angle-down"></i> --}}</a>
                            {{--  <ul role="menu" class="sub-menu">
@@ -114,9 +114,11 @@
                                 <li><a href="portfolio-details.html">Portfolio Details</a></li>
                             </ul> --}}
                         </li> 
+                        @else
+                        @endadmin
                         
                         @if (auth()->check())
-                    <li class="dropdown"><a href="#">{{auth()->user()->name}}<i class="fa fa-angle-down"></i></a>
+                    <li class="dropdown"><a href="{{route('profile.user',str_slug(auth()->user()->name))}}">{{auth()->user()->name}}<i class="fa fa-angle-down"></i></a>
                     
                     <ul role="menu" class="sub-menu">
                     <li><a href="/logout">Logout</a></li>

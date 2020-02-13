@@ -29,12 +29,17 @@ Route::get('/redis', function () {
 });
 
 Route::get('/', 'FrontEndController@welcome');
-Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');
-Route::get('/series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch');
-Route::get('/series/{series}', 'FrontendController@showSeries')->name('series');
-Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
 
-Route::get('/profile/{user}', 'ProfileController@index');
+Route::get('/series/{series}', 'FrontendController@showSeries')->name('series');
+
+Route::middleware('auth')->group(function () {
+
+    Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
+    Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');
+    Route::get('/series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch');
+});
+
+Route::get('/profile/{user}', 'ProfileController@index')->name('profile.user');
 Route::get('/register', function () {
     return view('register');
 });
