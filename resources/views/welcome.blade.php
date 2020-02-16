@@ -13,6 +13,7 @@
                         
                         @guest
                             <a href="#loginModal" class="btn btn-common" data-toggle="modal">Log in</a>
+                            <a href="/register" class="btn btn-common" >Register</a>
                         @endguest
                         
                     </div>

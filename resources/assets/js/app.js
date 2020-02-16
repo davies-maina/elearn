@@ -8,8 +8,6 @@ require("./bootstrap");
 
 window.Vue = require("vue");
 
-
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -21,6 +19,7 @@ Vue.component("login-modal", require("./components/LoginModal.vue"));
 Vue.component("vue-lessons", require("./components/VueLessons.vue"));
 
 Vue.component("v-player", require("./components/Player.vue"));
+Vue.component("v-stripe", require("./components/Stripe.vue"));
 
 const app = new Vue({
     el: "#app"

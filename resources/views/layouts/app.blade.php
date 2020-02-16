@@ -41,6 +41,7 @@
     <!-- Styles -->
    {{--  <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    @yield('scripts')
 </head>
 <body>
   <div id="app">

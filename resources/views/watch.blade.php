@@ -54,11 +54,11 @@
       @endif
   </v-player>
     <div>
-      @if ($previousLesson)
+      @if ($previousLesson->id!==$lesson->id)
        <a href="{{route('series.watch',['series' => $series->slug, 'lesson' => $previousLesson->id ])}}" class="btn btn-primary">Previous lesson</a> 
     @endif
     
-    @if ($nextLesson)
+    @if ($nextLesson->id!==$lesson->id)
         <a href="{{route('series.watch', ['series' => $series->slug, 'lesson' => $nextLesson->id ])}}" class="btn btn-primary">Next lesson</a>
     @endif
     </div>

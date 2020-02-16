@@ -63,6 +63,14 @@ Route::get('/logout', function () {
     Route::resource('{series_by_id}/lessons', 'LessonsController'); */ //explicit  route binding
 /* }); */
 
+Route::get('/subscribe', function () {
+
+    return view('subscribe');
+});
+Route::post('/subscribe', function () {
+
+    return auth()->user()->newSubscription('plan', request('plan'))->create(request('stripeToken'));
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
